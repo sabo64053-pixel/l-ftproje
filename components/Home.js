@@ -7,58 +7,51 @@ const Home = () => {
     <main>
       {/* Hero Section - Responsive height and layout */}
       <section className="relative h-[400px] sm:h-[450px] md:h-[500px] flex items-center overflow-hidden">
-        {/* Background Image - Modern Living Room */}
+        {/* Background Image - Figma Design */}
         <div className="absolute inset-0 z-0">
-          {/* Living Room Background Image */}
           <div className="w-full h-full relative overflow-hidden">
-            {/* Main living room image with blue overlay */}
-            <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-              {/* Living room furniture layout */}
+            {/* Figma Background Image */}
+            <div className="w-full h-full bg-gradient-to-br from-blue-50 via-indigo-100 to-purple-100 flex items-center justify-center">
+              {/* Abstract geometric shapes for modern look */}
               <div className="absolute inset-0">
-                {/* Windows on the left */}
-                <div className="absolute top-8 left-8 w-16 h-32 sm:w-20 sm:h-40 border-2 border-gray-300 opacity-40 rounded-lg"></div>
-                <div className="absolute top-8 left-32 sm:left-40 w-16 h-32 sm:w-20 sm:h-40 border-2 border-gray-300 opacity-40 rounded-lg"></div>
+                {/* Large circular element */}
+                <div className="absolute top-1/4 right-1/4 w-32 h-32 sm:w-48 sm:h-48 bg-gradient-to-br from-blue-200 to-purple-300 rounded-full opacity-30 blur-sm"></div>
                 
-                {/* Main sofa in center */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-20 sm:w-64 sm:h-24 bg-gradient-to-r from-gray-200 to-gray-300 rounded-lg opacity-50"></div>
+                {/* Floating rectangles */}
+                <div className="absolute top-1/3 left-1/4 w-16 h-8 sm:w-24 sm:h-12 bg-gradient-to-r from-indigo-200 to-purple-200 rounded-lg opacity-40 transform rotate-12"></div>
+                <div className="absolute bottom-1/3 right-1/3 w-12 h-16 sm:w-20 sm:h-24 bg-gradient-to-b from-purple-200 to-blue-200 rounded-lg opacity-35 transform -rotate-6"></div>
                 
-                {/* Armchair on the left */}
-                <div className="absolute top-1/3 left-1/4 w-20 h-16 sm:w-24 sm:h-20 bg-gradient-to-r from-gray-250 to-gray-350 rounded-full opacity-40"></div>
+                {/* Decorative lines */}
+                <div className="absolute top-1/2 left-1/6 w-1 h-20 sm:w-2 sm:h-32 bg-gradient-to-b from-blue-300 to-transparent opacity-50"></div>
+                <div className="absolute bottom-1/4 right-1/6 w-1 h-16 sm:w-2 sm:h-24 bg-gradient-to-b from-purple-300 to-transparent opacity-50"></div>
                 
-                {/* Coffee table */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-8 w-32 h-4 sm:w-40 sm:h-5 bg-gradient-to-r from-gray-300 to-gray-400 rounded opacity-60"></div>
+                {/* Small dots */}
+                <div className="absolute top-1/3 left-1/2 w-2 h-2 sm:w-3 sm:h-3 bg-blue-300 rounded-full opacity-60"></div>
+                <div className="absolute bottom-1/3 left-1/3 w-2 h-2 sm:w-3 sm:h-3 bg-purple-300 rounded-full opacity-60"></div>
+                <div className="absolute top-2/3 right-1/4 w-2 h-2 sm:w-3 sm:h-3 bg-indigo-300 rounded-full opacity-60"></div>
                 
-                {/* Floor lamp */}
-                <div className="absolute top-1/3 right-1/4 w-2 h-24 sm:w-3 sm:h-32 bg-gradient-to-b from-gray-400 to-gray-500 opacity-50"></div>
-                <div className="absolute top-1/3 right-1/4 w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-br from-gray-300 to-gray-400 rounded-full opacity-40 transform translate-x-3"></div>
-                
-                {/* Plants near windows */}
-                <div className="absolute top-1/2 left-16 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-green-300 to-green-400 rounded-full opacity-50"></div>
-                <div className="absolute top-1/2 left-40 sm:left-48 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-green-300 to-green-400 rounded-full opacity-50"></div>
-                
-                {/* Decorative vases */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-16 w-4 h-6 sm:w-5 sm:h-8 bg-gradient-to-b from-gray-200 to-gray-300 rounded opacity-40"></div>
-                <div className="absolute top-1/2 left-1/2 transform translate-x-16 translate-y-16 w-4 h-6 sm:w-5 sm:h-8 bg-gradient-to-b from-gray-200 to-gray-300 rounded opacity-40"></div>
-                
-                {/* Area rug */}
-                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-80 h-32 sm:w-96 sm:h-40 bg-gradient-to-r from-gray-150 to-gray-250 rounded-lg opacity-30"></div>
+                {/* Wave-like elements */}
+                <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-white/20 to-transparent"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 sm:w-48 sm:h-48 bg-gradient-to-bl from-blue-100 to-transparent rounded-full opacity-40"></div>
               </div>
             </div>
           </div>
         </div>
         
-        {/* Blue Overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 via-blue-800/60 to-blue-700/50 z-10"></div>
+        {/* Gradient Overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/10 to-transparent z-10"></div>
         
-        {/* Content */}
-        <div className="relative z-20 text-center sm:text-left px-4 sm:px-8 sm:px-12 lg:px-20 max-w-2xl mx-auto sm:mx-0">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-white leading-tight drop-shadow-lg">Elegant Home Decor</h1>
-          <p className="text-base sm:text-lg mb-6 sm:mb-8 text-white leading-relaxed opacity-95 drop-shadow-md px-4 sm:px-0">
-            Transform your space with our exclusive collection of luxury home decor and designer furniture pieces.
-          </p>
-          <Link href="/shop/home-decor" className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-all duration-300 text-sm sm:text-base shadow-lg hover:shadow-xl inline-flex items-center gap-2 transform hover:scale-105">
-            Explore More &gt;
-          </Link>
+        {/* Content - Aligned with navbar */}
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center sm:text-left max-w-2xl">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-gray-800 leading-tight drop-shadow-sm">Elegant Home Decor</h1>
+            <p className="text-base sm:text-lg mb-6 sm:mb-8 text-gray-700 leading-relaxed opacity-90 drop-shadow-sm px-4 sm:px-0">
+              Transform your space with our exclusive collection of luxury home decor and designer furniture pieces.
+            </p>
+            <Link href="/shop/home-decor" className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-all duration-300 text-sm sm:text-base shadow-lg hover:shadow-xl inline-flex items-center gap-2 transform hover:scale-105">
+              Explore More &gt;
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -299,7 +292,7 @@ const Home = () => {
 
       {/* Newsletter Signup - Responsive design */}
       <section className="bg-gray-900 py-8 sm:py-12 md:py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">Stay Updated</h2>
           <p className="text-gray-300 text-sm sm:text-base mb-6 sm:mb-8 max-w-2xl mx-auto">
             Subscribe to our newsletter for exclusive offers, new product announcements, and styling tips.
@@ -324,5 +317,6 @@ const Home = () => {
 };
 
 export default Home;
+
 
 
