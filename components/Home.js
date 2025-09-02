@@ -67,64 +67,92 @@ const Home = () => {
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {/* Category Card 1: Clothing */}
             <Link href="/category/clothing" className="block group">
-              <div className="relative overflow-hidden rounded-lg sm:rounded-xl shadow-md sm:shadow-lg hover:shadow-xl transition-all duration-300 bg-gray-100 hover:bg-gray-50">
+              <div className="relative overflow-hidden rounded-lg sm:rounded-xl shadow-md sm:shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200">
                 <div className="h-40 sm:h-48 md:h-64 flex items-center justify-center p-3 sm:p-4">
+                  {/* Clothing Image */}
                   <div className="text-center">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-200 rounded-full mx-auto mb-2 sm:mb-3 flex items-center justify-center">
-                      <svg className="w-8 h-8 sm:w-10 sm:h-10 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-200 to-blue-300 rounded-full mx-auto mb-3 flex items-center justify-center shadow-lg">
+                      <svg className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                     </div>
-                    <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-800">Clothing</h3>
+                    {/* Decorative elements */}
+                    <div className="absolute top-2 right-2 w-2 h-2 bg-blue-300 rounded-full opacity-60"></div>
+                    <div className="absolute bottom-2 left-2 w-3 h-3 bg-blue-400 rounded-full opacity-40"></div>
                   </div>
+                </div>
+                {/* Category Title - Bottom */}
+                <div className="absolute bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm p-3 sm:p-4">
+                  <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-800 text-center">Clothing</h3>
                 </div>
               </div>
             </Link>
 
             {/* Category Card 2: Shoes */}
             <Link href="/category/shoes" className="block group">
-              <div className="relative overflow-hidden rounded-lg sm:rounded-xl shadow-md sm:shadow-lg hover:shadow-xl transition-all duration-300 bg-gray-100 hover:bg-gray-50">
+              <div className="relative overflow-hidden rounded-lg sm:rounded-xl shadow-md sm:shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-green-50 to-green-100 hover:from-green-100 hover:to-green-200">
                 <div className="h-40 sm:h-48 md:h-64 flex items-center justify-center p-3 sm:p-4">
+                  {/* Shoes Image */}
                   <div className="text-center">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-200 rounded-full mx-auto mb-2 sm:mb-3 flex items-center justify-center">
-                      <svg className="w-8 h-8 sm:w-10 sm:h-10 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-green-200 to-green-300 rounded-full mx-auto mb-3 flex items-center justify-center shadow-lg">
+                      <svg className="w-10 h-10 sm:w-12 sm:h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                     </div>
-                    <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-800">Shoes</h3>
+                    {/* Decorative elements */}
+                    <div className="absolute top-2 right-2 w-2 h-2 bg-green-300 rounded-full opacity-60"></div>
+                    <div className="absolute bottom-2 left-2 w-3 h-3 bg-green-400 rounded-full opacity-40"></div>
                   </div>
+                </div>
+                {/* Category Title - Bottom */}
+                <div className="absolute bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm p-3 sm:p-4">
+                  <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-800 text-center">Shoes</h3>
                 </div>
               </div>
             </Link>
 
             {/* Category Card 3: Makeup */}
             <Link href="/category/makeup" className="block group">
-              <div className="relative overflow-hidden rounded-lg sm:rounded-xl shadow-md sm:shadow-lg hover:shadow-xl transition-all duration-300 bg-gray-100 hover:bg-gray-50">
+              <div className="relative overflow-hidden rounded-lg sm:rounded-xl shadow-md sm:shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-pink-50 to-pink-100 hover:from-pink-100 hover:to-pink-200">
                 <div className="h-40 sm:h-48 md:h-64 flex items-center justify-center p-3 sm:p-4">
+                  {/* Makeup Image */}
                   <div className="text-center">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-200 rounded-full mx-auto mb-2 sm:mb-3 flex items-center justify-center">
-                      <svg className="w-8 h-8 sm:w-10 sm:h-10 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-pink-200 to-pink-300 rounded-full mx-auto mb-3 flex items-center justify-center shadow-lg">
+                      <svg className="w-10 h-10 sm:w-12 sm:h-12 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
                       </svg>
                     </div>
-                    <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-800">Makeup</h3>
+                    {/* Decorative elements */}
+                    <div className="absolute top-2 right-2 w-2 h-2 bg-pink-300 rounded-full opacity-60"></div>
+                    <div className="absolute bottom-2 left-2 w-3 h-3 bg-pink-400 rounded-full opacity-40"></div>
                   </div>
+                </div>
+                {/* Category Title - Bottom */}
+                <div className="absolute bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm p-3 sm:p-4">
+                  <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-800 text-center">Makeup</h3>
                 </div>
               </div>
             </Link>
 
             {/* Category Card 4: Home Decor */}
             <Link href="/category/home-decor" className="block group">
-              <div className="relative overflow-hidden rounded-lg sm:rounded-xl shadow-md sm:shadow-lg hover:shadow-xl transition-all duration-300 bg-gray-100 hover:bg-gray-50">
+              <div className="relative overflow-hidden rounded-lg sm:rounded-xl shadow-md sm:shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200">
                 <div className="h-40 sm:h-48 md:h-64 flex items-center justify-center p-3 sm:p-4">
+                  {/* Home Decor Image */}
                   <div className="text-center">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-200 rounded-full mx-auto mb-2 sm:mb-3 flex items-center justify-center">
-                      <svg className="w-8 h-8 sm:w-10 sm:h-10 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-purple-200 to-purple-300 rounded-full mx-auto mb-3 flex items-center justify-center shadow-lg">
+                      <svg className="w-10 h-10 sm:w-12 sm:h-12 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
                       </svg>
                     </div>
-                    <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-800">Home Decor</h3>
+                    {/* Decorative elements */}
+                    <div className="absolute top-2 right-2 w-2 h-2 bg-purple-300 rounded-full opacity-60"></div>
+                    <div className="absolute bottom-2 left-2 w-3 h-3 bg-purple-400 rounded-full opacity-40"></div>
                   </div>
+                </div>
+                {/* Category Title - Bottom */}
+                <div className="absolute bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm p-3 sm:p-4">
+                  <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-800 text-center">Home Decor</h3>
                 </div>
               </div>
             </Link>
