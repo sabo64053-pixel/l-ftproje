@@ -10,14 +10,14 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Mock product data based on the image
+  // Mock product data
   const product = {
     id: id,
     name: 'Premium Women\'s Blazer',
     price: 899,
     originalPrice: 1299,
     brand: 'Zara',
-    description: 'An essential piece for the modern working woman, this premium blazer is the perfect blend of elegance and comfort. With its high-quality fabric and meticulous craftsmanship, it\'s an investment you can wear for years to come.',
+    description: 'An essential piece for the modern working woman, this premium blazer is the perfect blend of elegance and comfort.',
     colors: ['Black', 'Blue', 'Beige'],
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     features: [
@@ -34,32 +34,11 @@ const ProductDetail = () => {
     ]
   };
 
-  // Similar products data
   const similarProducts = [
-    {
-      id: 1,
-      name: 'Designer Leather Handbag',
-      price: 459,
-      image: '/api/placeholder/300/300'
-    },
-    {
-      id: 2,
-      name: 'Luxury Face Cream',
-      price: 125,
-      image: '/api/placeholder/300/300'
-    },
-    {
-      id: 3,
-      name: 'Modern Table Lamp',
-      price: 459,
-      image: '/api/placeholder/300/300'
-    },
-    {
-      id: 4,
-      name: 'Premium Skincare Set',
-      price: 459,
-      image: '/api/placeholder/300/300'
-    }
+    { id: 1, name: 'Designer Leather Handbag', price: 459, image: '/api/placeholder/300/300' },
+    { id: 2, name: 'Luxury Face Cream', price: 125, image: '/api/placeholder/300/300' },
+    { id: 3, name: 'Modern Table Lamp', price: 459, image: '/api/placeholder/300/300' },
+    { id: 4, name: 'Premium Skincare Set', price: 459, image: '/api/placeholder/300/300' }
   ];
 
   const addToCart = () => {
@@ -76,17 +55,15 @@ const ProductDetail = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white shadow-sm">
+      {/* Header - Desktop Only */}
+      <div className="hidden md:block bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Top Header */}
           <div className="flex items-center justify-between py-4">
             <Link href="/" className="text-xl sm:text-2xl font-bold text-blue-900">
               LIFT・PICK 升取
             </Link>
             
-            {/* Search Bar - Hidden on mobile */}
-            <div className="hidden md:flex flex-1 max-w-md mx-8">
+            <div className="flex flex-1 max-w-md mx-8">
               <div className="relative w-full">
                 <input
                   type="text"
@@ -99,20 +76,7 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <div
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="w-8 h-8 flex items-center justify-center cursor-pointer"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </div>
-            </div>
-
-            {/* User Icons - Desktop Only */}
-            <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
+            <div className="flex items-center space-x-4 lg:space-x-8">
               <Link href="/profile" className="flex flex-col items-center text-blue-900 hover:text-blue-700 transition-colors">
                 <svg className="w-6 h-6 lg:w-7 lg:h-7 mb-1 lg:mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -137,23 +101,8 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          {/* Mobile Search Bar */}
-          <div className="md:hidden mb-4">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search for products..."
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-              <svg className="w-5 h-5 absolute left-3 top-2.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-          </div>
-
-          {/* Navigation */}
           <div className="border-t border-gray-200 py-3">
-            <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
+            <nav className="flex items-center space-x-4 lg:space-x-8">
               <div className="flex items-center space-x-1 cursor-pointer">
                 <span className="text-gray-700 hover:text-blue-600 text-sm lg:text-base">All Categories</span>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -169,18 +118,41 @@ const ProductDetail = () => {
         </div>
       </div>
 
-      {/* Mobile Menu - Outside header */}
+      {/* Mobile Header */}
+      <div className="md:hidden bg-white shadow-sm">
+        <div className="flex items-center justify-between p-4">
+          <Link href="/" className="text-xl font-bold text-blue-900">
+            LIFT・PICK
+          </Link>
+          
+          <div className="flex items-center space-x-4">
+            <div className="relative">
+              <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            
+            <div
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="w-8 h-8 flex items-center justify-center cursor-pointer"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu - Sağdan açılır */}
       <div className={`md:hidden fixed inset-0 z-50 transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-        {/* Backdrop */}
         <div 
           className="absolute inset-0 bg-black bg-opacity-30"
           onClick={() => setIsMobileMenuOpen(false)}
         />
         
-        {/* Menu Panel */}
         <div className={`absolute right-0 top-0 h-full w-72 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
           <div className="flex flex-col h-full">
-            {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-100">
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
@@ -200,10 +172,8 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            {/* Menu Content */}
             <div className="flex-1 overflow-y-auto p-6">
               <div className="space-y-8">
-                {/* Navigation Links */}
                 <div className="space-y-4">
                   <Link href="/features" className="flex items-center text-gray-700 py-3 hover:text-purple-600 transition-colors">
                     <span className="text-lg font-medium">Features</span>
@@ -216,7 +186,6 @@ const ProductDetail = () => {
                   </Link>
                 </div>
 
-                {/* Language Selector */}
                 <div className="border-t border-gray-100 pt-6">
                   <h3 className="text-sm font-semibold text-gray-900 mb-3">Language</h3>
                   <div className="relative">
@@ -232,7 +201,6 @@ const ProductDetail = () => {
                   </div>
                 </div>
 
-                {/* User Section */}
                 <div className="border-t border-gray-100 pt-6">
                   <div className="flex items-center space-x-3 mb-4">
                     <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
@@ -243,7 +211,6 @@ const ProductDetail = () => {
                     <span className="text-gray-700 font-medium">User Account</span>
                   </div>
                   
-                  {/* Account Actions */}
                   <div className="space-y-3">
                     <Link href="/profile" className="flex items-center text-gray-700 py-2 hover:bg-gray-50 rounded-lg px-2 transition-colors">
                       <svg className="w-5 h-5 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -268,7 +235,6 @@ const ProductDetail = () => {
                     </Link>
                   </div>
 
-                  {/* Logout Button */}
                   <div className="mt-6">
                     <button className="w-full flex items-center justify-center space-x-2 px-4 py-3 border border-gray-200 rounded-lg bg-white text-gray-700 hover:bg-gray-50 transition-colors">
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -290,7 +256,6 @@ const ProductDetail = () => {
           {/* Product Images */}
           <div className="lg:w-1/2">
             <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6">
-              {/* Main Product Image */}
               <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center mb-4">
                 <div className="text-center text-gray-500">
                   <svg className="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -300,7 +265,6 @@ const ProductDetail = () => {
                 </div>
               </div>
               
-              {/* Thumbnail Images */}
               <div className="grid grid-cols-4 gap-2">
                 {product.images.map((image, index) => (
                   <div key={index} className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
@@ -318,13 +282,9 @@ const ProductDetail = () => {
           {/* Product Info */}
           <div className="lg:w-1/2">
             <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6">
-              {/* Brand */}
               <p className="text-blue-600 font-medium mb-2">{product.brand}</p>
-              
-              {/* Product Name */}
               <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
               
-              {/* Price */}
               <div className="flex flex-wrap items-center space-x-2 sm:space-x-3 mb-6">
                 <span className="text-2xl sm:text-3xl font-bold text-blue-600">₺{product.price}</span>
                 <span className="text-lg sm:text-xl text-gray-500 line-through">₺{product.originalPrice}</span>
@@ -333,7 +293,6 @@ const ProductDetail = () => {
                 </span>
               </div>
 
-              {/* Color Selection */}
               <div className="mb-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">Color</h3>
                 <div className="flex space-x-3">
@@ -351,7 +310,6 @@ const ProductDetail = () => {
                 <p className="text-sm text-gray-600 mt-2">Selected: {selectedColor}</p>
               </div>
 
-              {/* Size Selection */}
               <div className="mb-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">Size</h3>
                 <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -372,7 +330,6 @@ const ProductDetail = () => {
                 <p className="text-sm text-gray-600 mt-2">Selected: {selectedSize}</p>
               </div>
 
-              {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 mb-8">
                 <div
                   onClick={addToCart}
@@ -393,7 +350,6 @@ const ProductDetail = () => {
                 </div>
               </div>
 
-              {/* Product Details Section */}
               <div className="border-t border-gray-200 pt-6">
                 <div className="flex items-center justify-between mb-4 cursor-pointer">
                   <h3 className="text-lg font-semibold text-gray-900">Product Details</h3>
@@ -403,18 +359,14 @@ const ProductDetail = () => {
                 </div>
                 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  {/* Description */}
                   <div>
                     <p className="text-gray-700 leading-relaxed text-sm sm:text-base">{product.description}</p>
-                    
-                    {/* Shipping & Returns */}
                     <div className="mt-4 space-y-2">
                       <p className="text-sm text-gray-600">Free shipping over ₺500</p>
                       <p className="text-sm text-gray-600">30-day returns</p>
                     </div>
                   </div>
                   
-                  {/* Features */}
                   <div>
                     <ul className="space-y-2">
                       {product.features.map((feature, index) => (
@@ -426,8 +378,6 @@ const ProductDetail = () => {
                         </li>
                       ))}
                     </ul>
-                    
-                    {/* Care Instructions */}
                     <div className="mt-4 space-y-2">
                       <p className="text-sm text-gray-600">Dry clean recommended</p>
                       <p className="text-sm text-gray-600">Store in cool, dry place</p>
