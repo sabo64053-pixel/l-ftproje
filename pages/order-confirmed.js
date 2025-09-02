@@ -38,7 +38,7 @@ const OrderConfirmed = () => {
 
             {/* Success Message */}
             <h1 className="text-2xl font-bold text-green-600 mb-2">Order Confirmed</h1>
-            <p className="text-gray-600 mb-8">Your order has been placed and you'll be receiving a confirmation email shortly.</p>
+            <p className="text-gray-600 mb-8">Your order has been placed and you&apos;ll be receiving a confirmation email shortly.</p>
 
             {/* Action Buttons */}
             <div className="space-y-3">

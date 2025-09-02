@@ -513,7 +513,7 @@ const Products = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29-1.009-5.824-2.562M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <h3 className="text-lg font-medium text-gray-900 mb-2">No Products Found</h3>
-                <p className="text-gray-500">Try adjusting your filters to find what you're looking for.</p>
+                <p className="text-gray-500">Try adjusting your filters to find what you&apos;re looking for.</p>
               </div>
             )}
           </div>

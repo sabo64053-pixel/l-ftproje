@@ -109,7 +109,7 @@ const PaymentFailedPage = () => {
 
           {/* Message */}
           <p className="text-gray-600 mb-8">
-            We couldn't process your payment. Please try again.
+            We couldn&apos;t process your payment. Please try again.
           </p>
 
           {/* Action Buttons */}

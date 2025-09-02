@@ -7,55 +7,55 @@ const Profile = () => {
   const [showAddAddress, setShowAddAddress] = useState(false);
 
   const [formData, setFormData] = useState({
-    firstName: 'Sarah',
-    lastName: 'Johnson',
-    email: 'sarah.johnson@email.com',
-    phone: '+1 (555) 123-4567',
+    firstName: 'Ayşe',
+    lastName: 'Yılmaz',
+    email: 'ayse.yilmaz@email.com',
+    phone: '+90 (555) 123-4567',
     dateOfBirth: '15.05.1990',
-    gender: 'Female'
+    gender: 'Kadın'
   });
 
   const [addresses, setAddresses] = useState([
     {
       id: 1,
-      type: 'Office',
-      name: 'John Doe',
-      street: '456 Business Ave, Suite 200',
-      city: 'New York, NY 10002',
-      phone: '+1 (555) 987-6543'
+      type: 'İş',
+      name: 'Ahmet Yılmaz',
+      street: '456 İş Caddesi, Ofis 200',
+      city: 'İstanbul, 34000',
+      phone: '+90 (555) 987-6543'
     },
     {
       id: 2,
-      type: 'Home',
-      name: 'Sarah Johnson',
-      street: '123 Main Street',
-      city: 'New York, NY 10001',
-      phone: '+1 (555) 123-4567'
+      type: 'Ev',
+      name: 'Ayşe Yılmaz',
+      street: '123 Ana Sokak',
+      city: 'İstanbul, 34000',
+      phone: '+90 (555) 123-4567'
     }
   ]);
 
   const [orders] = useState([
     {
       id: 1,
-      date: 'Jan 22, 2025',
-      status: 'Delivered',
-      total: '$249.99',
+      date: '22 Oca 2025',
+      status: 'Teslim Edildi',
+      total: '₺249.99',
       items: 3,
       thumbnails: ['jacket1', 'tshirt1', 'jacket2']
     },
     {
       id: 2,
-      date: 'Jan 22, 2025',
-      status: 'In Transit',
-      total: '$249.99',
+      date: '22 Oca 2025',
+      status: 'Yolda',
+      total: '₺249.99',
       items: 3,
       thumbnails: ['jacket1', 'tshirt1']
     },
     {
       id: 3,
-      date: 'Jan 22, 2025',
-      status: 'Processing',
-      total: '$249.99',
+      date: '22 Oca 2025',
+      status: 'İşleniyor',
+      total: '₺249.99',
       items: 3,
       thumbnails: ['jacket1', 'tshirt1', 'jacket2']
     }
@@ -71,88 +71,88 @@ const Profile = () => {
   const renderPersonalInfo = () => (
     <div className="bg-white rounded-xl shadow-lg p-8">
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-800">Personal Information</h2>
+        <h2 className="text-3xl font-bold text-gray-800">Kişisel Bilgiler</h2>
         <button
           onClick={() => setIsEditing(!isEditing)}
-          className="bg-purple-700 hover:bg-purple-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 flex items-center gap-2"
+          className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 flex items-center gap-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
           </svg>
-          {isEditing ? 'Save Changes' : 'Edit Profile'}
+          {isEditing ? 'Değişiklikleri Kaydet' : 'Profili Düzenle'}
         </button>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Ad</label>
           <input
             type="text"
             name="firstName"
             value={formData.firstName}
             onChange={handleInputChange}
             disabled={!isEditing}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 disabled:bg-gray-100"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-gray-50 disabled:bg-gray-100"
           />
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Soyad</label>
           <input
             type="text"
             name="lastName"
             value={formData.lastName}
             onChange={handleInputChange}
             disabled={!isEditing}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 disabled:bg-gray-100"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-gray-50 disabled:bg-gray-100"
           />
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">E-posta Adresi</label>
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleInputChange}
             disabled={!isEditing}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 disabled:bg-gray-100"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-gray-50 disabled:bg-gray-100"
           />
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Telefon Numarası</label>
           <input
             type="tel"
             name="phone"
             value={formData.phone}
             onChange={handleInputChange}
             disabled={!isEditing}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 disabled:bg-gray-100"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-gray-50 disabled:bg-gray-100"
           />
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Date of Birth</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Doğum Tarihi</label>
           <input
             type="text"
             name="dateOfBirth"
             value={formData.dateOfBirth}
             onChange={handleInputChange}
             disabled={!isEditing}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 disabled:bg-gray-100"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-gray-50 disabled:bg-gray-100"
           />
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Gender</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Cinsiyet</label>
           <input
             type="text"
             name="gender"
             value={formData.gender}
             onChange={handleInputChange}
             disabled={!isEditing}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 disabled:bg-gray-100"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-gray-50 disabled:bg-gray-100"
           />
         </div>
       </div>
@@ -161,35 +161,35 @@ const Profile = () => {
 
   const renderOrderHistory = () => (
     <div className="bg-white rounded-xl shadow-lg p-8">
-      <h2 className="text-3xl font-bold text-gray-800 mb-8">Order History</h2>
+      <h2 className="text-3xl font-bold text-gray-800 mb-8">Sipariş Geçmişi</h2>
       
       <div className="space-y-6">
         {orders.map((order) => (
           <div key={order.id} className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
             <div className="flex justify-between items-start mb-4">
               <div>
-                <p className="text-sm text-gray-600">Placed on {order.date}</p>
+                <p className="text-sm text-gray-600">{order.date} tarihinde verildi</p>
                 <div className="flex items-center gap-2 mt-2">
                   <div className={`w-3 h-3 rounded-full ${
-                    order.status === 'Delivered' ? 'bg-green-500' :
-                    order.status === 'In Transit' ? 'bg-blue-500' : 'bg-orange-500'
+                    order.status === 'Teslim Edildi' ? 'bg-green-500' :
+                    order.status === 'Yolda' ? 'bg-blue-500' : 'bg-orange-500'
                   }`}></div>
                   <span className={`font-medium ${
-                    order.status === 'Delivered' ? 'text-green-600' :
-                    order.status === 'In Transit' ? 'text-blue-600' : 'text-orange-600'
+                    order.status === 'Teslim Edildi' ? 'text-green-600' :
+                    order.status === 'Yolda' ? 'text-blue-600' : 'text-orange-600'
                   }`}>{order.status}</span>
                 </div>
               </div>
               <div className="text-right">
                 <p className="text-2xl font-bold text-gray-800">{order.total}</p>
-                <p className="text-sm text-gray-600">{order.items} Items</p>
+                <p className="text-sm text-gray-600">{order.items} Ürün</p>
               </div>
             </div>
             
             <div className="flex items-center gap-3">
               {order.thumbnails.map((thumb, index) => (
                 <div key={index} className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center">
-                  <span className="text-xs text-gray-500">Item {index + 1}</span>
+                  <span className="text-xs text-gray-500">Ürün {index + 1}</span>
                 </div>
               ))}
             </div>
@@ -202,22 +202,22 @@ const Profile = () => {
   const renderAddressBook = () => (
     <div className="bg-white rounded-xl shadow-lg p-8">
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-800">Address Book</h2>
+        <h2 className="text-3xl font-bold text-gray-800">Adres Defteri</h2>
         <button
           onClick={() => setShowAddAddress(!showAddAddress)}
-          className="bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 flex items-center gap-2"
+          className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 flex items-center gap-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
           </svg>
-          + Add New Address
+          + Yeni Adres Ekle
         </button>
       </div>
 
       {showAddAddress && (
         <div className="bg-gray-50 rounded-lg p-6 mb-6">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-semibold text-gray-800">Add New Address</h3>
+            <h3 className="text-lg font-semibold text-gray-800">Yeni Adres Ekle</h3>
             <button
               onClick={() => setShowAddAddress(false)}
               className="text-gray-500 hover:text-gray-700"
@@ -231,51 +231,51 @@ const Profile = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
               type="text"
-              placeholder="First name"
-              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Ad"
+              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
             />
             <input
               type="text"
-              placeholder="Last name"
-              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Soyad"
+              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
             />
             <input
               type="text"
-              placeholder="Street address"
-              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 md:col-span-2"
+              placeholder="Sokak adresi"
+              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 md:col-span-2"
             />
             <input
               type="text"
-              placeholder="City"
-              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Şehir"
+              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
             />
-            <select className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-              <option>Select State</option>
-              <option>New York</option>
-              <option>California</option>
-              <option>Texas</option>
+            <select className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
+              <option>İl Seçin</option>
+              <option>İstanbul</option>
+              <option>Ankara</option>
+              <option>İzmir</option>
             </select>
             <input
               type="text"
-              placeholder="ZIP / Postal code"
-              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Posta kodu"
+              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
             />
             <input
               type="tel"
-              placeholder="Phone number"
-              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Telefon numarası"
+              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
             />
           </div>
           
           <div className="flex gap-3 mt-6">
-            <button className="bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">
-              Save Address
+            <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">
+              Adresi Kaydet
             </button>
             <button
               onClick={() => setShowAddAddress(false)}
               className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
             >
-              Cancel
+              İptal
             </button>
           </div>
         </div>
@@ -285,11 +285,11 @@ const Profile = () => {
         {addresses.map((address) => (
           <div key={address.id} className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
             <div className="flex justify-between items-start mb-4">
-              <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
+              <span className="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">
                 {address.type}
               </span>
               <div className="flex gap-2">
-                <button className="text-gray-500 hover:text-blue-600 p-2">
+                <button className="text-gray-500 hover:text-purple-600 p-2">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                   </svg>
@@ -316,42 +316,42 @@ const Profile = () => {
 
   const renderAccountSettings = () => (
     <div className="bg-white rounded-xl shadow-lg p-8">
-      <h2 className="text-3xl font-bold text-gray-800 mb-8">Account Settings</h2>
+      <h2 className="text-3xl font-bold text-gray-800 mb-8">Hesap Ayarları</h2>
       
       <div className="space-y-6">
         <div className="border border-gray-200 rounded-lg p-6">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">Change Password</h3>
+          <h3 className="text-xl font-semibold text-gray-800 mb-4">Şifre Değiştir</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
               type="password"
-              placeholder="Current Password"
-              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Mevcut Şifre"
+              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
             />
             <input
               type="password"
-              placeholder="New Password"
-              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Yeni Şifre"
+              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
             />
           </div>
-          <button className="bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 mt-4">
-            Update Password
+          <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 mt-4">
+            Şifreyi Güncelle
           </button>
         </div>
 
         <div className="border border-gray-200 rounded-lg p-6">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">Notification Preferences</h3>
+          <h3 className="text-xl font-semibold text-gray-800 mb-4">Bildirim Tercihleri</h3>
           <div className="space-y-3">
             <label className="flex items-center">
               <input type="checkbox" className="mr-3" defaultChecked />
-              <span className="text-gray-700">Email notifications</span>
+              <span className="text-gray-700">E-posta bildirimleri</span>
             </label>
             <label className="flex items-center">
               <input type="checkbox" className="mr-3" defaultChecked />
-              <span className="text-gray-700">SMS notifications</span>
+              <span className="text-gray-700">SMS bildirimleri</span>
             </label>
             <label className="flex items-center">
               <input type="checkbox" className="mr-3" />
-              <span className="text-gray-700">Push notifications</span>
+              <span className="text-gray-700">Push bildirimleri</span>
             </label>
           </div>
         </div>
@@ -380,12 +380,12 @@ const Profile = () => {
       <div className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-3">
-            <span className="text-gray-500 text-sm">profile</span>
+            <span className="text-gray-500 text-sm">profil</span>
             <div className="flex items-center space-x-6 text-sm text-gray-500">
-              <Link href="/about" className="hover:text-gray-700">About Us</Link>
-              <Link href="/help" className="hover:text-gray-700">Help Center</Link>
-              <Link href="/contact" className="hover:text-gray-700">Contact</Link>
-              <span className="cursor-pointer hover:text-gray-700">EN</span>
+              <Link href="/about" className="hover:text-gray-700">Hakkımızda</Link>
+              <Link href="/help" className="hover:text-gray-700">Yardım Merkezi</Link>
+              <Link href="/contact" className="hover:text-gray-700">Temas etmek</Link>
+              <span className="cursor-pointer hover:text-gray-700">TR</span>
             </div>
           </div>
         </div>
@@ -400,8 +400,8 @@ const Profile = () => {
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Search for products..."
-                  className="w-96 px-4 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Ürün, kategori veya marka arayın..."
+                  className="w-96 px-4 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                 />
                 <svg className="absolute left-3 top-2.5 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -412,15 +412,15 @@ const Profile = () => {
             <div className="flex items-center space-x-8">
               <div className="text-center">
                 <div className="w-8 h-8 bg-gray-200 rounded-full mx-auto mb-1"></div>
-                <span className="text-xs text-gray-600">Account</span>
+                <span className="text-xs text-gray-600">Hesap</span>
               </div>
               <div className="text-center">
                 <div className="w-8 h-8 bg-gray-200 rounded-full mx-auto mb-1"></div>
-                <span className="text-xs text-gray-600">Favorites</span>
+                <span className="text-xs text-gray-600">Favoriler</span>
               </div>
               <div className="text-center">
                 <div className="w-8 h-8 bg-gray-200 rounded-full mx-auto mb-1"></div>
-                <span className="text-xs text-gray-600">Cart (0)</span>
+                <span className="text-xs text-gray-600">Sepet (3)</span>
               </div>
             </div>
           </div>
@@ -432,15 +432,15 @@ const Profile = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center space-x-8 py-4">
             <div className="flex items-center space-x-2 cursor-pointer">
-              <span className="text-gray-800 font-medium">All Categories</span>
+              <span className="text-gray-800 font-medium">Tüm Kategoriler</span>
               <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </div>
-            <Link href="/clothing" className="text-gray-800 font-medium hover:text-blue-600">Clothing</Link>
-            <Link href="/shoes" className="text-gray-800 font-medium hover:text-blue-600">Shoes</Link>
-            <Link href="/makeup" className="text-gray-800 font-medium hover:text-blue-600">Makeup</Link>
-            <Link href="/home-decor" className="text-gray-800 font-medium hover:text-blue-600">Home Decor</Link>
+            <Link href="/clothing" className="text-gray-800 font-medium hover:text-purple-600">Giyim</Link>
+            <Link href="/shoes" className="text-gray-800 font-medium hover:text-purple-600">Ayakkabı</Link>
+            <Link href="/makeup" className="text-gray-800 font-medium hover:text-purple-600">Makyaj</Link>
+            <Link href="/home-decor" className="text-gray-800 font-medium hover:text-purple-600">Ev Dekorasyonu</Link>
           </nav>
         </div>
       </div>
@@ -458,7 +458,7 @@ const Profile = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-800">Sarah Johnson</h3>
+                <h3 className="text-lg font-semibold text-gray-800">Ayşe Yılmaz</h3>
               </div>
 
               {/* Navigation */}
@@ -467,35 +467,35 @@ const Profile = () => {
                   onClick={() => setActiveTab('personal-info')}
                   className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-colors duration-200 ${
                     activeTab === 'personal-info' 
-                      ? 'bg-blue-100 text-blue-700' 
+                      ? 'bg-purple-100 text-purple-700' 
                       : 'text-gray-700 hover:bg-gray-100'
                   }`}
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
-                  <span>Personal Information</span>
+                  <span>Kişisel Bilgiler</span>
                 </button>
 
                 <button
                   onClick={() => setActiveTab('order-history')}
                   className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-colors duration-200 ${
                     activeTab === 'order-history' 
-                      ? 'bg-blue-100 text-blue-700' 
+                      ? 'bg-purple-100 text-purple-700' 
                       : 'text-gray-700 hover:bg-gray-100'
                   }`}
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
-                  <span>Order History</span>
+                  <span>Sipariş Geçmişi</span>
                 </button>
 
                 <button
                   onClick={() => setActiveTab('address-book')}
                   className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-colors duration-200 ${
                     activeTab === 'address-book' 
-                      ? 'bg-blue-100 text-blue-700' 
+                      ? 'bg-purple-100 text-purple-700' 
                       : 'text-gray-700 hover:bg-gray-100'
                   }`}
                 >
@@ -503,14 +503,14 @@ const Profile = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  <span>Address Book</span>
+                  <span>Adres Defteri</span>
                 </button>
 
                 <button
                   onClick={() => setActiveTab('account-settings')}
                   className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-colors duration-200 ${
                     activeTab === 'account-settings' 
-                      ? 'bg-blue-100 text-blue-700' 
+                      ? 'bg-purple-100 text-purple-700' 
                       : 'text-gray-700 hover:bg-gray-100'
                   }`}
                 >
@@ -518,7 +518,7 @@ const Profile = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  <span>Account Settings</span>
+                  <span>Hesap Ayarları</span>
                 </button>
               </nav>
             </div>
@@ -536,38 +536,38 @@ const Profile = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-lg font-semibold mb-4">Company Info</h3>
+              <h3 className="text-lg font-semibold mb-4">Şirket Bilgileri</h3>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/about" className="hover:text-blue-200">About Us</Link></li>
-                <li><Link href="/warranty" className="hover:text-blue-200">Warranty Terms</Link></li>
-                <li><Link href="/agreement" className="hover:text-blue-200">Distance Selling Agreement</Link></li>
-                <li><Link href="/returns" className="hover:text-blue-200">Returns and Exchanges</Link></li>
-                <li><Link href="/privacy" className="hover:text-blue-200">Privacy Policy</Link></li>
+                <li><Link href="/about" className="hover:text-blue-200">Hakkımızda</Link></li>
+                <li><Link href="/warranty" className="hover:text-blue-200">Garanti Şartları</Link></li>
+                <li><Link href="/agreement" className="hover:text-blue-200">Mesafeli Satış Sözleşmesi</Link></li>
+                <li><Link href="/returns" className="hover:text-blue-200">İade ve Değişim</Link></li>
+                <li><Link href="/privacy" className="hover:text-blue-200">Gizlilik Politikası</Link></li>
               </ul>
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold mb-4">Customer Service</h3>
+              <h3 className="text-lg font-semibold mb-4">Müşteri Hizmetleri</h3>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/contact" className="hover:text-blue-200">Contact Us</Link></li>
-                <li><Link href="/shipping" className="hover:text-blue-200">Shipping Info</Link></li>
-                <li><Link href="/returns" className="hover:text-blue-200">Returns</Link></li>
-                <li><Link href="/size-guide" className="hover:text-blue-200">Size Guide</Link></li>
+                <li><Link href="/contact" className="hover:text-blue-200">Bize Ulaşın</Link></li>
+                <li><Link href="/shipping" className="hover:text-blue-200">Kargo Bilgileri</Link></li>
+                <li><Link href="/returns" className="hover:text-blue-200">İadeler</Link></li>
+                <li><Link href="/size-guide" className="hover:text-blue-200">Beden Rehberi</Link></li>
               </ul>
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+              <h3 className="text-lg font-semibold mb-4">Hızlı Linkler</h3>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/new-arrivals" className="hover:text-blue-200">New Arrivals</Link></li>
-                <li><Link href="/sale" className="hover:text-blue-200">Sale</Link></li>
-                <li><Link href="/gift-cards" className="hover:text-blue-200">Gift Cards</Link></li>
-                <li><Link href="/wishlist" className="hover:text-blue-200">Wishlist</Link></li>
+                <li><Link href="/new-arrivals" className="hover:text-blue-200">Yeni Gelenler</Link></li>
+                <li><Link href="/sale" className="hover:text-blue-200">İndirim</Link></li>
+                <li><Link href="/gift-cards" className="hover:text-blue-200">Hediye Kartları</Link></li>
+                <li><Link href="/wishlist" className="hover:text-blue-200">İstek Listesi</Link></li>
               </ul>
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold mb-4">Connect</h3>
+              <h3 className="text-lg font-semibold mb-4">Bağlantı</h3>
               <div className="flex space-x-4 mb-4">
                 <a href="#" className="text-white hover:text-blue-200">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -590,7 +590,7 @@ const Profile = () => {
           </div>
           
           <div className="border-t border-blue-800 mt-8 pt-8 text-center">
-            <p className="text-sm text-blue-200">©2025 LIFT-PICK. All rights reserved.</p>
+            <p className="text-sm text-blue-200">©2025 LIFT-PICK. Tüm hakları saklıdır.</p>
           </div>
         </div>
       </footer>

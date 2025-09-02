@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -242,7 +244,6 @@ const Favorites = () => {
   const addToCart = (id) => {
     // This would typically add to a global cart state
     showNotificationMessage('Product added to cart!', 'success');
-    console.log(`Added product ${id} to cart`);
   };
 
   if (favoriteProducts.length === 0) {
@@ -256,9 +257,9 @@ const Favorites = () => {
             </svg>
             <h1 className="text-3xl font-bold text-gray-900 mb-4">Your favorites list is empty</h1>
             <p className="text-gray-600 mb-8">Start adding products you love to your favorites!</p>
-            <a href="/products" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
+            <Link href="/products" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
               Browse Products
-            </a>
+            </Link>
           </div>
         </main>
         <Footer />
@@ -434,9 +435,9 @@ const Favorites = () => {
             </svg>
             <h3 className="text-lg font-medium text-gray-900 mb-2">No favorites found</h3>
             <p className="text-gray-500 mb-4">Try adjusting your filters or browse more products.</p>
-            <a href="/products" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+            <Link href="/products" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
               Browse Products
-            </a>
+            </Link>
           </div>
         )}
       </main>

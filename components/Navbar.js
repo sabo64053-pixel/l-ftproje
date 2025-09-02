@@ -106,6 +106,7 @@ const Navbar = () => {
                     3
                   </span>
                 </div>
+                
                 <span className="text-xs sm:text-sm font-medium hidden sm:block">Cart (3)</span>
               </Link>
 
@@ -149,11 +150,11 @@ const Navbar = () => {
       {/* Bottom Category Navigation Bar */}
       <div className="border-t border-gray-200 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex items-center justify-center py-4 relative">
-            {/* Mobile Category Button - Left Side */}
+          <nav className="flex items-center justify-between py-4">
+            {/* Mobile Category Button */}
             <button
               onClick={() => setIsCategoryMenuOpen(!isCategoryMenuOpen)}
-              className="lg:hidden absolute left-0 flex items-center space-x-2 text-gray-800 hover:text-blue-700 transition-colors font-medium"
+              className="lg:hidden flex items-center space-x-2 text-gray-800 hover:text-blue-700 transition-colors font-medium"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -161,7 +162,7 @@ const Navbar = () => {
               <span>Categories</span>
             </button>
 
-            {/* Desktop Category Navigation - Centered */}
+            {/* Desktop Category Navigation */}
             <div className="hidden lg:flex items-center justify-center space-x-8">
               <div className="relative">
                 <Link href="/category" className="flex items-center space-x-2 text-gray-800 hover:text-blue-700 transition-colors font-medium">
@@ -186,10 +187,10 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* Mobile Search Button - Right Side */}
+            {/* Mobile Search Button */}
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="lg:hidden absolute right-0 p-2 text-gray-600 hover:text-gray-900"
+              className="lg:hidden p-2 text-gray-600 hover:text-gray-900"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
