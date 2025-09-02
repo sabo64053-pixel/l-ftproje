@@ -277,67 +277,68 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Service Highlights - Responsive layout */}
+      {/* Service Benefits - Figma Design */}
       <section className="bg-white py-8 sm:py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-8 sm:mb-10 md:mb-12">Why Choose Us</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {/* Service 1 */}
-            <div className="text-center p-4 sm:p-6">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-blue-100 rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center">
-                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            {/* Service 1: 30-Day Returns */}
+            <div className="bg-[#F8F8FC] rounded-lg p-6 sm:p-8 text-center shadow-sm">
+              <div className="w-16 h-16 bg-[#2A2A5A] rounded-full mx-auto mb-4 flex items-center justify-center">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2 sm:mb-3">Free Shipping</h3>
-              <p className="text-gray-600 text-sm sm:text-base">Free shipping on orders over $50</p>
+              <h3 className="text-lg sm:text-xl font-bold text-[#2A2A5A] mb-2">30-Day Returns</h3>
+              <p className="text-[#2A2A5A] text-sm opacity-80">Hassle-free returns</p>
             </div>
 
-            {/* Service 2 */}
-            <div className="text-center p-4 sm:p-6">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-green-100 rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center">
-                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            {/* Service 2: Secure Payments */}
+            <div className="bg-[#F8F8FC] rounded-lg p-6 sm:p-8 text-center shadow-sm">
+              <div className="w-16 h-16 bg-[#2A2A5A] rounded-full mx-auto mb-4 flex items-center justify-center">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2 sm:mb-3">Quality Guarantee</h3>
-              <p className="text-gray-600 text-sm sm:text-base">30-day money-back guarantee</p>
+              <h3 className="text-lg sm:text-xl font-bold text-[#2A2A5A] mb-2">Secure Payments</h3>
+              <p className="text-[#2A2A5A] text-sm opacity-80">SSL encrypted checkout</p>
             </div>
 
-            {/* Service 3 */}
-            <div className="text-center p-4 sm:p-6">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-purple-100 rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center">
-                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {/* Service 3: 24/7 Support */}
+            <div className="bg-[#F8F8FC] rounded-lg p-6 sm:p-8 text-center shadow-sm">
+              <div className="w-16 h-16 bg-[#2A2A5A] rounded-full mx-auto mb-4 flex items-center justify-center">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 100 19.5 9.75 9.75 0 000-19.5z" />
                 </svg>
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2 sm:mb-3">24/7 Support</h3>
-              <p className="text-gray-600 text-sm sm:text-base">Round-the-clock customer support</p>
+              <h3 className="text-lg sm:text-xl font-bold text-[#2A2A5A] mb-2">24/7 Support</h3>
+              <p className="text-[#2A2A5A] text-sm opacity-80">Expert customer service</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Newsletter Signup - Responsive design */}
-      <section className="bg-gray-900 py-8 sm:py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">Stay Updated</h2>
-          <p className="text-gray-300 text-sm sm:text-base mb-6 sm:mb-8 max-w-2xl mx-auto">
-            Subscribe to our newsletter for exclusive offers, new product announcements, and styling tips.
-          </p>
-          <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              className="flex-1 px-3 sm:px-4 py-2 sm:py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400 text-sm sm:text-base"
-            />
-            <button
-              type="submit"
-              className="px-4 sm:px-6 py-2 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-300 text-sm sm:text-base"
-            >
-              Subscribe
-            </button>
-          </form>
+      {/* Newsletter Signup - Figma Design */}
+      <section className="bg-white py-8 sm:py-12 md:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-lg shadow-sm p-8 sm:p-12 text-center max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2A2A5A] mb-4">Join Our Community</h2>
+            <p className="text-[#2A2A5A] text-sm sm:text-base mb-6 opacity-80">
+              Be the first to discover new collections and receive exclusive offers
+            </p>
+            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6B5BCC] focus:border-[#6B5BCC] text-gray-900 placeholder-gray-500 text-sm"
+              />
+              <button
+                type="submit"
+                className="px-6 py-3 bg-[#6B5BCC] hover:bg-[#5A4BB8] text-white font-semibold rounded-lg transition-colors duration-300 text-sm"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
         </div>
       </section>
     </main>
