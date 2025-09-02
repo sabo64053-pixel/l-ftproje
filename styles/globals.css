@@ -28,6 +28,6 @@ body {
 /* Mobile bottom navigation bar spacing */
 @media (max-width: 768px) {
   body {
-    padding-bottom: 6rem;
+    padding-bottom: 4rem;
   }
 }

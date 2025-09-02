@@ -73,43 +73,6 @@ const Navbar = () => {
 
             {/* User Actions */}
             <div className="flex items-center space-x-2 sm:space-x-4 lg:space-x-8">
-              {/* Search Button - Mobile/Tablet */}
-              <button
-                onClick={() => setIsSearchOpen(!isSearchOpen)}
-                className="lg:hidden p-2 text-gray-600 hover:text-gray-900"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </button>
-
-              <Link href="/profile" className="flex flex-col items-center text-blue-900 hover:text-blue-700 transition-colors">
-                <svg className="w-6 h-6 sm:w-7 sm:h-7 mb-1 sm:mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                <span className="text-xs sm:text-sm font-medium hidden sm:block">Account</span>
-              </Link>
-              
-              <Link href="/favorites" className="flex flex-col items-center text-blue-900 hover:text-blue-700 transition-colors">
-                <svg className="w-6 h-6 sm:w-7 sm:h-7 mb-1 sm:mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
-                <span className="text-xs sm:text-sm font-medium hidden sm:block">Favorites</span>
-              </Link>
-              
-              <Link href="/cart" className="flex flex-col items-center text-blue-900 hover:text-blue-700 transition-colors">
-                <div className="relative">
-                  <svg className="w-6 h-6 sm:w-7 sm:h-7 mb-1 sm:mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m6 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01" />
-                  </svg>
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center font-medium">
-                    3
-                  </span>
-                </div>
-                
-                <span className="text-xs sm:text-sm font-medium hidden sm:block">Cart (3)</span>
-              </Link>
-
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -365,7 +328,7 @@ const Navbar = () => {
       <div className="md:hidden pb-20"></div>
 
       {/* Bottom Navigation Bar - Mobile Only */}
-      <div className={`md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 transition-transform duration-300 z-50 ${isMobileMenuOpen ? 'translate-x-full' : 'translate-x-0'}`}>
+      <div className={`md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 transition-transform duration-300 z-40 ${isMobileMenuOpen ? 'translate-x-full' : 'translate-x-0'}`}>
         <div className="flex items-center justify-around py-2">
           {/* Anasayfa */}
           <Link href="/" className="flex flex-col items-center py-2 px-3 rounded-lg transition-colors">
