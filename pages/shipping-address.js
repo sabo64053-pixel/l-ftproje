@@ -6,45 +6,17 @@ import Footer from '../components/Footer';
 const ShippingAddress = () => {
   const router = useRouter();
   const [checkoutData, setCheckoutData] = useState(null);
-  const [shippingAddress, setShippingAddress] = useState({
+  const [showNewAddressForm, setShowNewAddressForm] = useState(false);
+  const [selectedAddress, setSelectedAddress] = useState('home');
+  const [newAddress, setNewAddress] = useState({
     firstName: '',
     lastName: '',
-    company: '',
-    address1: '',
-    address2: '',
+    streetAddress: '',
     city: '',
     state: '',
     zipCode: '',
-    country: 'United States',
-    phone: '',
-    email: ''
+    phone: ''
   });
-
-  const [billingSameAsShipping, setBillingSameAsShipping] = useState(true);
-  const [billingAddress, setBillingAddress] = useState({
-    firstName: '',
-    lastName: '',
-    company: '',
-    address1: '',
-    address2: '',
-    city: '',
-    state: '',
-    zipCode: '',
-    country: 'United States',
-    phone: '',
-    email: ''
-  });
-
-  const handleShippingChange = (field, value) => {
-    setShippingAddress(prev => ({ ...prev, [field]: value }));
-    if (billingSameAsShipping) {
-      setBillingAddress(prev => ({ ...prev, [field]: value }));
-    }
-  };
-
-  const handleBillingChange = (field, value) => {
-    setBillingAddress(prev => ({ ...prev, [field]: value }));
-  };
 
   // Load checkout data from localStorage
   useEffect(() => {
@@ -57,21 +29,57 @@ const ShippingAddress = () => {
     }
   }, [router]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
+  const handleNewAddressChange = (field, value) => {
+    setNewAddress(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSaveNewAddress = () => {
     // Validate required fields
-    if (!shippingAddress.firstName || !shippingAddress.lastName || !shippingAddress.address1 || 
-        !shippingAddress.city || !shippingAddress.zipCode || !shippingAddress.phone || !shippingAddress.email) {
+    if (!newAddress.firstName || !newAddress.lastName || !newAddress.streetAddress || 
+        !newAddress.city || !newAddress.state || !newAddress.zipCode || !newAddress.phone) {
       alert('Please fill in all required fields.');
       return;
     }
 
-    // Save shipping and billing data
+    // Save the new address and proceed to payment
     const orderData = {
       ...checkoutData,
-      shippingAddress,
-      billingAddress: billingSameAsShipping ? shippingAddress : billingAddress,
+      shippingAddress: newAddress,
+      orderDate: new Date().toISOString()
+    };
+
+    // Store order data
+    localStorage.setItem('orderData', JSON.stringify(orderData));
+    
+    // Navigate to payment page
+    router.push('/payment');
+  };
+
+  const handleContinueToPayment = () => {
+    // Use selected address and proceed to payment
+    const selectedAddressData = selectedAddress === 'home' 
+      ? {
+          firstName: 'John',
+          lastName: 'Doe',
+          streetAddress: '123 Main Street, Apt 4B',
+          city: 'New York',
+          state: 'NY',
+          zipCode: '10001',
+          phone: '+1 (555) 123-4567'
+        }
+      : {
+          firstName: 'John',
+          lastName: 'Doe',
+          streetAddress: '456 Business Ave, Suite 200',
+          city: 'New York',
+          state: 'NY',
+          zipCode: '10002',
+          phone: '+1 (555) 987-6543'
+        };
+
+    const orderData = {
+      ...checkoutData,
+      shippingAddress: selectedAddressData,
       orderDate: new Date().toISOString()
     };
 
@@ -86,7 +94,7 @@ const ShippingAddress = () => {
     return (
       <div className="min-h-screen bg-gray-50">
         <Navbar />
-        <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
             <p className="text-gray-600">Loading checkout data...</p>
@@ -102,372 +110,267 @@ const ShippingAddress = () => {
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Shipping Address</h1>
-          <p className="text-gray-600">Enter your shipping and billing information</p>
+        {/* Progress Bar */}
+        <div className="flex justify-center mb-8">
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center">
+              <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold">
+                1
+              </div>
+              <span className="ml-2 font-semibold text-blue-600">Shipping Address</span>
+            </div>
+            <div className="w-16 h-0.5 bg-gray-300"></div>
+            <div className="flex items-center">
+              <div className="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-semibold">
+                2
+              </div>
+              <span className="ml-2 font-semibold text-gray-600">Payment Details</span>
+            </div>
+          </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Form */}
-          <div className="flex-1">
-            <form onSubmit={handleSubmit} className="space-y-8">
-              {/* Shipping Address */}
-              <div className="bg-white rounded-xl shadow-sm p-6">
-                <h2 className="text-xl font-semibold text-gray-900 mb-6">Shipping Address</h2>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
-                    <input
-                      type="text"
-                      value={shippingAddress.firstName}
-                      onChange={(e) => handleShippingChange('firstName', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
-                    <input
-                      type="text"
-                      value={shippingAddress.lastName}
-                      onChange={(e) => handleShippingChange('lastName', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    />
-                  </div>
-                </div>
+        {!showNewAddressForm ? (
+          /* Saved Addresses */
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center">
+                <svg className="w-5 h-5 text-gray-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+                <h1 className="text-2xl font-bold text-gray-900">Shipping Address</h1>
+              </div>
+              <button
+                onClick={() => setShowNewAddressForm(true)}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center transition-colors"
+              >
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
+                New Address
+              </button>
+            </div>
 
-                <div className="mt-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Company (Optional)</label>
-                  <input
-                    type="text"
-                    value={shippingAddress.company}
-                    onChange={(e) => handleShippingChange('company', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-
-                <div className="mt-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Address Line 1 *</label>
-                  <input
-                    type="text"
-                    value={shippingAddress.address1}
-                    onChange={(e) => handleShippingChange('address1', e.target.value)}
-                    placeholder="Street address, P.O. box, company name"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    required
-                  />
-                </div>
-
-                <div className="mt-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Address Line 2 (Optional)</label>
-                  <input
-                    type="text"
-                    value={shippingAddress.address2}
-                    onChange={(e) => handleShippingChange('address2', e.target.value)}
-                    placeholder="Apartment, suite, unit, building, floor, etc."
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">City *</label>
-                    <input
-                      type="text"
-                      value={shippingAddress.city}
-                      onChange={(e) => handleShippingChange('city', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    />
+            {/* Address Cards */}
+            <div className="space-y-4">
+              {/* Home Address */}
+              <div className={`border-2 rounded-lg p-6 ${selectedAddress === 'home' ? 'border-purple-300 bg-purple-50' : 'border-gray-200 bg-white'}`}>
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center mb-2">
+                      <span className="font-semibold text-gray-900">Home</span>
+                      <span className="ml-2 bg-blue-600 text-white text-xs px-2 py-1 rounded-full">Default</span>
+                    </div>
+                    <p className="text-gray-700">John Doe</p>
+                    <p className="text-gray-700">123 Main Street, Apt 4B</p>
+                    <p className="text-gray-700">New York, NY 10001</p>
+                    <p className="text-gray-700">+1 (555) 123-4567</p>
                   </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">State *</label>
-                    <input
-                      type="text"
-                      value={shippingAddress.state}
-                      onChange={(e) => handleShippingChange('state', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">ZIP Code *</label>
-                    <input
-                      type="text"
-                      value={shippingAddress.zipCode}
-                      onChange={(e) => handleShippingChange('zipCode', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Country *</label>
-                    <select
-                      value={shippingAddress.country}
-                      onChange={(e) => handleShippingChange('country', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      required
+                  <div className="flex items-center space-x-2">
+                    <button className="text-blue-600 hover:text-blue-700 flex items-center">
+                      <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                      Edit
+                    </button>
+                    <div 
+                      className={`w-6 h-6 rounded-full border-2 flex items-center justify-center cursor-pointer ${
+                        selectedAddress === 'home' 
+                          ? 'border-blue-600 bg-blue-600' 
+                          : 'border-gray-300'
+                      }`}
+                      onClick={() => setSelectedAddress('home')}
                     >
-                      <option value="United States">United States</option>
-                      <option value="Canada">Canada</option>
-                      <option value="United Kingdom">United Kingdom</option>
-                      <option value="Germany">Germany</option>
-                      <option value="France">France</option>
-                      <option value="Australia">Australia</option>
-                    </select>
+                      {selectedAddress === 'home' && (
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
+                    </div>
                   </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
-                    <input
-                      type="tel"
-                      value={shippingAddress.phone}
-                      onChange={(e) => handleShippingChange('phone', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="mt-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                  <input
-                    type="email"
-                    value={shippingAddress.email}
-                    onChange={(e) => handleShippingChange('email', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    required
-                  />
                 </div>
               </div>
 
-              {/* Billing Address */}
-              <div className="bg-white rounded-xl shadow-sm p-6">
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-semibold text-gray-900">Billing Address</h2>
-                  <label className="flex items-center space-x-2">
-                    <input
-                      type="checkbox"
-                      checked={billingSameAsShipping}
-                      onChange={(e) => setBillingSameAsShipping(e.target.checked)}
-                      className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                    />
-                    <span className="text-sm text-gray-700">Same as shipping address</span>
-                  </label>
-                </div>
-
-                {!billingSameAsShipping && (
-                  <div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
-                        <input
-                          type="text"
-                          value={billingAddress.firstName}
-                          onChange={(e) => handleBillingChange('firstName', e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                          required={!billingSameAsShipping}
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
-                        <input
-                          type="text"
-                          value={billingAddress.lastName}
-                          onChange={(e) => handleBillingChange('lastName', e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                          required={!billingSameAsShipping}
-                        />
-                      </div>
+              {/* Office Address */}
+              <div className={`border-2 rounded-lg p-6 ${selectedAddress === 'office' ? 'border-purple-300 bg-purple-50' : 'border-gray-200 bg-white'}`}>
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center mb-2">
+                      <span className="font-semibold text-gray-900">Office</span>
                     </div>
-
-                    <div className="mt-4">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Company (Optional)</label>
-                      <input
-                        type="text"
-                        value={billingAddress.company}
-                        onChange={(e) => handleBillingChange('company', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      />
-                    </div>
-
-                    <div className="mt-4">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Address Line 1 *</label>
-                      <input
-                        type="text"
-                        value={billingAddress.address1}
-                        onChange={(e) => handleBillingChange('address1', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        required={!billingSameAsShipping}
-                      />
-                    </div>
-
-                    <div className="mt-4">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Address Line 2 (Optional)</label>
-                      <input
-                        type="text"
-                        value={billingAddress.address2}
-                        onChange={(e) => handleBillingChange('address2', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">City *</label>
-                        <input
-                          type="text"
-                          value={billingAddress.city}
-                          onChange={(e) => handleBillingChange('city', e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                          required={!billingSameAsShipping}
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">State *</label>
-                        <input
-                          type="text"
-                          value={billingAddress.state}
-                          onChange={(e) => handleBillingChange('state', e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                          required={!billingSameAsShipping}
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">ZIP Code *</label>
-                        <input
-                          type="text"
-                          value={billingAddress.zipCode}
-                          onChange={(e) => handleBillingChange('zipCode', e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                          required={!billingSameAsShipping}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Country *</label>
-                        <select
-                          value={billingAddress.country}
-                          onChange={(e) => handleBillingChange('country', e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                          required={!billingSameAsShipping}
-                        >
-                          <option value="United States">United States</option>
-                          <option value="Canada">Canada</option>
-                          <option value="United Kingdom">United Kingdom</option>
-                          <option value="Germany">Germany</option>
-                          <option value="France">France</option>
-                          <option value="Australia">Australia</option>
-                        </select>
-                      </div>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
-                        <input
-                          type="tel"
-                          value={billingAddress.phone}
-                          onChange={(e) => handleBillingChange('phone', e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                          required={!billingSameAsShipping}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="mt-4">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                      <input
-                        type="email"
-                        value={billingAddress.email}
-                        onChange={(e) => handleBillingChange('email', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        required={!billingSameAsShipping}
-                      />
-                    </div>
+                    <p className="text-gray-700">John Doe</p>
+                    <p className="text-gray-700">456 Business Ave, Suite 200</p>
+                    <p className="text-gray-700">New York, NY 10002</p>
+                    <p className="text-gray-700">+1 (555) 987-6543</p>
                   </div>
-                )}
-              </div>
-
-              {/* Submit Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  type="button"
-                  onClick={() => window.history.back()}
-                  className="flex-1 sm:flex-none px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors"
-                >
-                  Back
-                </button>
-                <button
-                  type="submit"
-                  className="flex-1 sm:flex-none bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
-                >
-                  Continue to Payment
-                </button>
-              </div>
-            </form>
-          </div>
-
-          {/* Order Summary */}
-          <div className="lg:w-80">
-            <div className="bg-white rounded-xl shadow-sm p-6 sticky top-8">
-              <h2 className="text-xl font-semibold text-gray-900 mb-6">Order Summary</h2>
-              
-              {/* Items */}
-              <div className="space-y-3 mb-6">
-                {checkoutData.items.map((item) => (
-                  <div key={item.id} className="flex items-center justify-between">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span className="text-xs text-gray-600">{item.name.substring(0, 2)}</span>
-                      </div>
-                      <div>
-                        <p className="text-sm font-medium text-gray-900">{item.name}</p>
-                        <p className="text-xs text-gray-500">Qty: {item.quantity}</p>
-                      </div>
+                  <div className="flex items-center space-x-2">
+                    <button className="text-blue-600 hover:text-blue-700 flex items-center">
+                      <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                      Edit
+                    </button>
+                    <div 
+                      className={`w-6 h-6 rounded-full border-2 flex items-center justify-center cursor-pointer ${
+                        selectedAddress === 'office' 
+                          ? 'border-blue-600 bg-blue-600' 
+                          : 'border-gray-300'
+                      }`}
+                      onClick={() => setSelectedAddress('office')}
+                    >
+                      {selectedAddress === 'office' && (
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
                     </div>
-                    <span className="text-sm font-medium text-gray-900">${(item.price * item.quantity).toFixed(2)}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Price Breakdown */}
-              <div className="border-t border-gray-200 pt-4 space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span>Subtotal</span>
-                  <span>${checkoutData.subtotal.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span>Shipping</span>
-                  <span>{checkoutData.shipping === 0 ? 'Free' : `$${checkoutData.shipping.toFixed(2)}`}</span>
-                </div>
-                {checkoutData.discount > 0 && (
-                  <div className="flex justify-between text-sm text-green-600">
-                    <span>Discount</span>
-                    <span>-${checkoutData.discount.toFixed(2)}</span>
-                  </div>
-                )}
-                <div className="border-t border-gray-200 pt-2">
-                  <div className="flex justify-between font-semibold text-lg">
-                    <span>Total</span>
-                    <span>${checkoutData.total.toFixed(2)}</span>
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* Continue to Payment Button */}
+            <div className="mt-8 text-center">
+              <button
+                onClick={handleContinueToPayment}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-colors flex items-center mx-auto"
+              >
+                Continue to Payment
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
           </div>
-        </div>
+        ) : (
+          /* New Address Form */
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-white rounded-lg shadow-sm p-6">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center">
+                  <svg className="w-5 h-5 text-gray-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                  </svg>
+                  <h1 className="text-2xl font-bold text-gray-900">Shipping Address</h1>
+                </div>
+                <button
+                  onClick={() => setShowNewAddressForm(false)}
+                  className="text-gray-400 hover:text-gray-600"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              <div className="mb-6">
+                <h2 className="text-lg font-semibold text-gray-900">Add New Address</h2>
+              </div>
+
+              <form onSubmit={(e) => { e.preventDefault(); handleSaveNewAddress(); }} className="space-y-4">
+                {/* First Name and Last Name */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">First name</label>
+                    <input
+                      type="text"
+                      value={newAddress.firstName}
+                      onChange={(e) => handleNewAddressChange('firstName', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Last name</label>
+                    <input
+                      type="text"
+                      value={newAddress.lastName}
+                      onChange={(e) => handleNewAddressChange('lastName', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                  </div>
+                </div>
+
+                {/* Street Address */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Street address</label>
+                  <input
+                    type="text"
+                    value={newAddress.streetAddress}
+                    onChange={(e) => handleNewAddressChange('streetAddress', e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    required
+                  />
+                </div>
+
+                {/* City and State */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">City</label>
+                    <input
+                      type="text"
+                      value={newAddress.city}
+                      onChange={(e) => handleNewAddressChange('city', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Select State</label>
+                    <select
+                      value={newAddress.state}
+                      onChange={(e) => handleNewAddressChange('state', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    >
+                      <option value="">Select State</option>
+                      <option value="NY">New York</option>
+                      <option value="CA">California</option>
+                      <option value="TX">Texas</option>
+                      <option value="FL">Florida</option>
+                      <option value="IL">Illinois</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* ZIP Code and Phone */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">ZIP / Postal code</label>
+                    <input
+                      type="text"
+                      value={newAddress.zipCode}
+                      onChange={(e) => handleNewAddressChange('zipCode', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Phone number</label>
+                    <input
+                      type="tel"
+                      value={newAddress.phone}
+                      onChange={(e) => handleNewAddressChange('phone', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    />
+                  </div>
+                </div>
+
+                {/* Save Button */}
+                <button
+                  type="submit"
+                  className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center"
+                >
+                  Save and Continue to Payment
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
       </main>
 
       <Footer />
