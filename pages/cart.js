@@ -8,39 +8,39 @@ const Cart = () => {
   const [cartItems, setCartItems] = useState([
     {
       id: 1,
-      name: 'Premium Designer Handbag',
-      price: 459,
-      originalPrice: 699,
-      color: 'Black',
-      size: 'M',
+      name: 'Premium Leather Armchair',
+      price: 1299,
+      originalPrice: 1599,
+      color: 'Brown Leather',
+      size: 'Standard',
       quantity: 1,
       inStock: true,
-      imageType: 'handbag',
-      imageColor: 'purple'
+      imageType: 'chair',
+      imageColor: 'brown'
     },
     {
       id: 2,
-      name: 'Luxury Face Cream',
-      price: 125,
-      originalPrice: 199,
-      color: 'White',
-      size: '50ml',
-      quantity: 2,
+      name: 'Premium Leather Armchair',
+      price: 1299,
+      originalPrice: 1599,
+      color: 'Brown Leather',
+      size: 'Standard',
+      quantity: 1,
       inStock: true,
-      imageType: 'cosmetic',
-      imageColor: 'pink'
+      imageType: 'chair',
+      imageColor: 'brown'
     },
     {
       id: 3,
-      name: 'Modern Table Lamp',
-      price: 89,
-      originalPrice: 129,
-      color: 'White',
+      name: 'Premium Leather Armchair',
+      price: 1299,
+      originalPrice: 1599,
+      color: 'Brown Leather',
       size: 'Standard',
       quantity: 1,
-      inStock: false,
-      imageType: 'lamp',
-      imageColor: 'yellow'
+      inStock: true,
+      imageType: 'chair',
+      imageColor: 'brown'
     }
   ]);
   
@@ -58,7 +58,8 @@ const Cart = () => {
       green: 'from-green-100 to-green-200',
       red: 'from-red-100 to-red-200',
       gray: 'from-gray-100 to-gray-200',
-      orange: 'from-orange-100 to-orange-200'
+      orange: 'from-orange-100 to-orange-200',
+      brown: 'from-amber-100 to-amber-200'
     };
 
     const iconMap = {
@@ -85,6 +86,14 @@ const Cart = () => {
           </svg>
         ),
         text: 'Lamp'
+      },
+      chair: {
+        icon: (
+          <svg className="w-8 h-8 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+          </svg>
+        ),
+        text: 'Chair'
       }
     };
 
