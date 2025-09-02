@@ -24,3 +24,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Mobile bottom navigation bar spacing */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 6rem;
+  }
+}

@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const Home = () => {
   return (
-    <main className="pb-20 md:pb-0">
+    <main className="pb-24 md:pb-0">
       {/* Hero Section - Responsive height and layout */}
       <section className="relative h-[400px] sm:h-[450px] md:h-[500px] flex items-center overflow-hidden">
         {/* Background Image - Figma Design */}
