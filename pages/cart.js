@@ -212,23 +212,23 @@ const Cart = () => {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Shopping Cart</h1>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <h1 className="text-2xl font-bold text-gray-900 mb-4">Shopping Cart</h1>
 
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Cart Items */}
           <div className="flex-1">
             <div className="bg-white rounded-xl shadow-sm">
-              <div className="p-6 border-b border-gray-200">
-                <h2 className="text-xl font-semibold text-gray-900">Cart Items ({cartItems.length})</h2>
+              <div className="p-4 border-b border-gray-200">
+                <h2 className="text-lg font-semibold text-gray-900">Cart Items ({cartItems.length})</h2>
               </div>
 
               <div className="divide-y divide-gray-200">
                 {cartItems.map((item) => (
-                  <div key={item.id} className="p-6">
+                  <div key={item.id} className="p-4">
                     <div className="flex items-center space-x-4">
                       {/* Product Image */}
-                      <div className="w-20 h-20 flex-shrink-0">
+                      <div className="w-16 h-16 flex-shrink-0">
                         {renderProductImage(item)}
                       </div>
 
@@ -236,21 +236,21 @@ const Cart = () => {
                       <div className="flex-1 min-w-0">
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between">
                           <div className="flex-1">
-                            <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.name}</h3>
-                            <div className="flex items-center space-x-4 text-sm text-gray-600 mb-2">
+                            <h3 className="text-base font-semibold text-gray-900 mb-1">{item.name}</h3>
+                            <div className="flex items-center space-x-3 text-xs text-gray-600 mb-1">
                               <span>Color: {item.color}</span>
                               <span>Size: {item.size}</span>
                             </div>
                             <div className="flex items-center space-x-2">
-                              <span className="text-lg font-bold text-blue-600">${item.price}</span>
+                              <span className="text-base font-bold text-blue-600">${item.price}</span>
                               {item.originalPrice > item.price && (
-                                <span className="text-sm text-gray-500 line-through">${item.originalPrice}</span>
+                                <span className="text-xs text-gray-500 line-through">${item.originalPrice}</span>
                               )}
                             </div>
                           </div>
 
                           {/* Quantity Controls */}
-                          <div className="flex items-center space-x-4 mt-4 sm:mt-0">
+                          <div className="flex items-center space-x-3 mt-3 sm:mt-0">
                             <div className="flex items-center space-x-2">
                               <button
                                 onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}

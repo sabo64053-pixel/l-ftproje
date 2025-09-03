@@ -82,7 +82,7 @@ lift/
 
 1. **Repository'yi klonlayın:**
 ```bash
-git clone https://github.com/yourusername/lift-pick.git
+git clone https://githubn a.com/yourusername/lift-pick.git
 cd lift-pick
 ```
 
@@ -103,7 +103,8 @@ http://localhost:3000
 
 ## 📱 Responsive Breakpoints
 
-- **Mobile**: < 768px
+- **Mobile**: < şu pso
+lterrum 
 - **Tablet**: 768px - 1024px
 - **Desktop**: > 1024px
 
